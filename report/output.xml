@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180409 11:10:43.937" generator="Robot 3.0.2 (Python 3.5.3 on linux)">
+<suite source="/home/mark/PycharmProjects/ps_test_task_update/tests" id="s1" name="Tests">
+<suite source="/home/mark/PycharmProjects/ps_test_task_update/tests/test_client.robot" id="s1-s1" name="Test Client">
+<test id="s1-s1-t1" name="Test case">
+<kw library="ClientLibrary" name="Create Or Get Existing Client With Positive Balance">
+<doc>Return id and balance of client with positive balance or</doc>
+<arguments>
+<arg>${BALANCE_FOR_NEW_CLIENT}</arg>
+</arguments>
+<assign>
+<var>${client_id}</var>
+<var>${start_balance}</var>
+</assign>
+<msg level="INFO" timestamp="20180409 11:10:44.175">${client_id} = 3</msg>
+<msg level="INFO" timestamp="20180409 11:10:44.175">${start_balance} = 3.5</msg>
+<status starttime="20180409 11:10:44.173" endtime="20180409 11:10:44.175" status="PASS"></status>
+</kw>
+<kw library="ClientLibrary" name="Get Client Services">
+<doc>Returns a dictionary with services of client</doc>
+<arguments>
+<arg>${client_id}</arg>
+</arguments>
+<assign>
+<var>${client_services}</var>
+</assign>
+<msg level="INFO" timestamp="20180409 11:10:44.284">${client_services} = {'count': 1, 'items': [{'cost': 1.2, 'id': 1, 'name': 'Service #1'}]}</msg>
+<status starttime="20180409 11:10:44.176" endtime="20180409 11:10:44.284" status="PASS"></status>
+</kw>
+<kw library="ClientLibrary" name="Get Services">
+<doc>Return the dictionary of available services</doc>
+<assign>
+<var>${services}</var>
+</assign>
+<msg level="INFO" timestamp="20180409 11:10:44.292">${services} = {'count': 5, 'items': [{'cost': 1.2, 'id': 1, 'name': 'Service #1'}, {'cost': 0.35, 'id': 2, 'name': 'Service #2'}, {'cost': 0.15, 'id': 3, 'name': 'Service #3'}, {'cost': 0.15, 'id': 4, 'name': 'Serv...</msg>
+<status starttime="20180409 11:10:44.285" endtime="20180409 11:10:44.292" status="PASS"></status>
+</kw>
+<kw library="ClientLibrary" name="Get Unused Service">
+<doc>Return an unused service</doc>
+<arguments>
+<arg>${client_services}</arg>
+<arg>${services}</arg>
+</arguments>
+<assign>
+<var>${service_id}</var>
+<var>${service_cost}</var>
+</assign>
+<msg level="INFO" timestamp="20180409 11:10:44.293">${service_id} = 2</msg>
+<msg level="INFO" timestamp="20180409 11:10:44.294">${service_cost} = 0.35</msg>
+<status starttime="20180409 11:10:44.293" endtime="20180409 11:10:44.294" status="PASS"></status>
+</kw>
+<kw library="ClientLibrary" name="Add New Service To Client">
+<doc>Adds a new service to the client</doc>
+<arguments>
+<arg>${client_id}</arg>
+<arg>${service_id}</arg>
+</arguments>
+<status starttime="20180409 11:10:44.294" endtime="20180409 11:10:44.311" status="PASS"></status>
+</kw>
+<kw library="ClientLibrary" name="Wait Appear New Service For Client">
+<doc>Waiting for a new service to appear in the client list</doc>
+<arguments>
+<arg>${client_id}</arg>
+<arg>${service_id}</arg>
+<arg>${WAIT_TIME}</arg>
+</arguments>
+<status starttime="20180409 11:10:44.312" endtime="20180409 11:11:14.405" status="PASS"></status>
+</kw>
+<kw library="ClientLibrary" name="Get Client Balance">
+<doc>Return current balance of client</doc>
+<arguments>
+<arg>${client_id}</arg>
+</arguments>
+<assign>
+<var>${current_balance}</var>
+</assign>
+<msg level="INFO" timestamp="20180409 11:11:14.406">${current_balance} = 3.5</msg>
+<status starttime="20180409 11:11:14.405" endtime="20180409 11:11:14.406" status="PASS"></status>
+</kw>
+<kw library="ClientLibrary" name="Check Balance Reduced To Service Cost">
+<doc>Check current balance of client and calculated balance</doc>
+<arguments>
+<arg>${start_balance}</arg>
+<arg>${current_balance}</arg>
+<arg>${service_cost}</arg>
+</arguments>
+<msg level="FAIL" timestamp="20180409 11:11:14.407">Expected balance of client to be 3.15 but was 3.5</msg>
+<status starttime="20180409 11:11:14.406" endtime="20180409 11:11:14.407" status="FAIL"></status>
+</kw>
+<status starttime="20180409 11:10:44.172" endtime="20180409 11:11:14.407" critical="yes" status="FAIL">Expected balance of client to be 3.15 but was 3.5</status>
+</test>
+<status starttime="20180409 11:10:44.003" endtime="20180409 11:11:14.410" status="FAIL"></status>
+</suite>
+<status starttime="20180409 11:10:43.953" endtime="20180409 11:11:14.412" status="FAIL"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="0" fail="1">Tests</stat>
+<stat name="Test Client" id="s1-s1" pass="0" fail="1">Tests.Test Client</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
